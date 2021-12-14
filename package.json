@@ -11,6 +11,7 @@
     "start:css": "gulp watch",
     "prebuild": "rimraf dist",
     "build": "npm run types && rollup -c && gulp",
+    "prepare": "npm run build",
     "types": "tsc --declaration src/index.ts --declarationDir dist --emitDeclarationOnly",
     "clean": "rimraf dist",
     "test": "jest"
