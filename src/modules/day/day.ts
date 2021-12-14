@@ -85,10 +85,6 @@ export function handleCalendarDayClick(e: any) {
     return;
   }
 
-  if (this.disableEmptyDayClick && this.getDateEvents(this.currentDate).length <= 0) {
-    return;
-  }
-
   // Error check for old selected node
   if (
     this.oldSelectedNode &&
@@ -110,6 +106,11 @@ export function handleCalendarDayClick(e: any) {
   let dayNum;
   day = e.target.parentElement.innerText;
   dayNum = parseInt(day, 10);
+
+  // Check if date isn't empty when required
+  if (this.disableEmptyDayClick && this.getDateEvents(this.calculateCurrentDate(0, dayNum)).length <= 0) {
+    return;
+  }
 
   //Remove old day selection
   this.removeOldDaySelection();
@@ -143,14 +144,27 @@ export function removeOldDaySelection() {
  * @param {number} [newMonth] - Value of new month
  * @param {number} [newYear] - Value of new year
  */
-export function updateCurrentDate(monthOffset: number, newDay?: number, newMonth?: number, newYear?: number) {
-  this.currentDate = new Date(
+ export function calculateCurrentDate(monthOffset: number, newDay?: number, newMonth?: number, newYear?: number) {
+  return new Date(
     newYear ? newYear : this.currentDate.getFullYear(),
     (newMonth !== undefined && newMonth !== null)
       ? newMonth
       : this.currentDate.getMonth() + monthOffset,
     ((monthOffset !== 0) || !newDay) ? 1 : newDay
   );
+}
+
+/**
+ *  0 - Do not change month
+ * -1 - Go to previous month
+ *  1 - Go to next month
+ * @param {number} monthOffset - Months to go backward or forward
+ * @param {number} [newDay] - Value of new day
+ * @param {number} [newMonth] - Value of new month
+ * @param {number} [newYear] - Value of new year
+ */
+export function updateCurrentDate(monthOffset: number, newDay?: number, newMonth?: number, newYear?: number) {
+  this.currentDate = this.calculateCurrentDate(monthOffset, newDay, newMonth, newYear)
 
   if (monthOffset !== 0 || (newMonth !== undefined && newMonth !== null) || newYear) {
     this.updateCalendar(true);
