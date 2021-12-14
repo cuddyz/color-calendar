@@ -85,6 +85,10 @@ export function handleCalendarDayClick(e: any) {
     return;
   }
 
+  if (this.disableEmptyDayClick) {
+    return;
+  }
+
   // Error check for old selected node
   if (
     this.oldSelectedNode &&

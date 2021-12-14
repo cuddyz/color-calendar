@@ -46,6 +46,7 @@ export default class Calendar {
   borderRadius?: string;
   disableMonthYearPickers: boolean;
   disableDayClick: boolean;
+  disableEmptyDayClick: boolean;
   disableMonthArrowClick: boolean;
   customMonthValues?: string[];
   customWeekdayValues?: string[];
@@ -165,6 +166,7 @@ export default class Calendar {
     this.borderRadius = options.borderRadius;
     this.disableMonthYearPickers = options.disableMonthYearPickers ?? false;
     this.disableDayClick = options.disableDayClick ?? false;
+    this.disableEmptyDayClick = options.disableEmptyDayClick ?? false;
     this.disableMonthArrowClick = options.disableMonthArrowClick ?? false;
     this.customMonthValues = options.customMonthValues;
     this.customWeekdayValues = options.customWeekdayValues;

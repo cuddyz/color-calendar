@@ -19,6 +19,7 @@ export interface CalendarOptions {
   borderRadius?: string;
   disableMonthYearPickers?: boolean;
   disableDayClick?: boolean;
+  disableEmptyDayClick?: boolean;
   disableMonthArrowClick?: boolean;
   customMonthValues?: string[];
   customWeekdayValues?: string[];
