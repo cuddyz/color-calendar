@@ -134,6 +134,7 @@ export default class Calendar {
   handleCalendarDayClick!: (e: any) => void;
   removeOldDaySelection!: () => void;
   updateCurrentDate!: (monthOffset: number, newDay?: number, newMonth?: number, newYear?: number) => void;
+  calculateCurrentDate!: (monthOffset: number, newDay?: number, newMonth?: number, newYear?: number) => void;
   generateDays!: () => void;
   renderDays!: () => void;
   rerenderSelectedDay!: (element: HTMLElement, dayNum: number, storeOldSelected?: boolean) => void;
@@ -357,6 +358,7 @@ Calendar.prototype.selectDayInitial = day.selectDayInitial;
 Calendar.prototype.handleCalendarDayClick = day.handleCalendarDayClick;
 Calendar.prototype.removeOldDaySelection = day.removeOldDaySelection;
 Calendar.prototype.updateCurrentDate = day.updateCurrentDate;
+Calendar.prototype.calculateCurrentDate = day.calculateCurrentDate;
 Calendar.prototype.generateDays = day.generateDays;
 Calendar.prototype.renderDays = day.renderDays;
 Calendar.prototype.rerenderSelectedDay = day.rerenderSelectedDay;
