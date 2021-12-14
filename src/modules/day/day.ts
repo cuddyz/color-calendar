@@ -85,7 +85,7 @@ export function handleCalendarDayClick(e: any) {
     return;
   }
 
-  if (this.disableEmptyDayClick) {
+  if (this.disableEmptyDayClick && this.getDateEvents(this.currentDate).length <= 0) {
     return;
   }
 
